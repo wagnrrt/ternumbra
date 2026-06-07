@@ -1,4 +1,7 @@
+#include "../include/entities/Player.hpp"
 #include <raylib.h>
+
+entities::Player player;
 
 int main() {
   // Janela
@@ -8,11 +11,14 @@ int main() {
   // Game loop
   while (!WindowShouldClose()) {
     // Update
+    float deltatime = GetFrameTime();
+    player.Update(deltatime);
 
     // Draw
     BeginDrawing();
     ClearBackground(BLACK);
-    DrawText("Hello Raylib!", 190, 200, 20, WHITE);
+
+    player.Render();
     EndDrawing();
   }
 

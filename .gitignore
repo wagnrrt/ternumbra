@@ -1,30 +1,29 @@
 # Build artifacts
- build/
- bin/
- *.o
- *.a
- *.so
- *.dylib
- *.dll
- *.exe
+build/
+bin/
+*.o
+*.a
+*.so
+*.dylib
+*.dll
+*.exe
  
- # CMake
- CMakeFiles/
- CMakeCache.txt
- cmake_install.cmake
- *.cmake
+# CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+*.cmake
  
- # IDE
- .vscode/
- .idea/
- *.swp
- *.swo
- *.user
- 
- # OS
- .DS_Store
- Thumbs.db
- 
- # Cache
- .cache/
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.user
 
+# OS
+.DS_Store
+Thumbs.db
+
+# Cache
+.cache/

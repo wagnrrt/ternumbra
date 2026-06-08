@@ -1,12 +1,16 @@
 #include "../../include/entities/Player.hpp"
 #include "raylib.h"
 #include "raymath.h"
+#define ASSETS "resources/"
 
 namespace entities {
 Player::Player() {
   position = {100, 100};
   speed = 200;
+  texture = LoadTexture(ASSETS "player.png");
 }
+
+Player::~Player() { UnloadTexture(texture); }
 
 void Player::Update(float dt) {
   Vector2 input = {0, 0};
@@ -27,6 +31,6 @@ void Player::Update(float dt) {
   position += direction * speed * dt;
 }
 
-void Player::Render() { DrawRectangleV(position, {16, 16}, WHITE); }
+void Player::Render() { DrawTextureV(texture, position, WHITE); }
 
 } // namespace entities

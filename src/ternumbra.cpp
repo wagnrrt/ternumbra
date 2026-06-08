@@ -1,12 +1,12 @@
 #include "../include/entities/Player.hpp"
 #include <raylib.h>
 
-entities::Player player;
-
 int main() {
   // Janela
   InitWindow(800, 600, "Ternumbra");
   SetTargetFPS(60);
+
+  entities::Player player;
 
   // Game loop
   while (!WindowShouldClose()) {

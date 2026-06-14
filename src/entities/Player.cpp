@@ -6,8 +6,13 @@
 namespace entities {
 Player::Player() {
   position = {100, 100};
-  speed = 200;
+  speed = 300;
+
   texture = LoadTexture(ASSETS "player.png");
+
+  currentFrame = 0;
+  frameTimer = 0.0f;
+  frame = {0, 0, 12, 14};
 }
 
 Player::~Player() { UnloadTexture(texture); }
@@ -29,8 +34,39 @@ void Player::Update(float dt) {
 
   direction = Vector2Lerp(direction, input, 10 * dt);
   position += direction * speed * dt;
+
+  if (input.x != 0 || input.y != 0) {
+    frame.x = 12;
+    if (input.x < 0) {
+      frame.width = -12;
+    } else if (input.x > 0) {
+      frame.width = 12;
+    }
+  } else {
+    frame.x = 0;
+  }
+
+  Animation(dt);
 }
 
-void Player::Render() { DrawTextureV(texture, position, WHITE); }
+void Player::Animation(float dt) {
+  frameTimer += dt;
+  if (frameTimer >= 0.1) {
+    currentFrame++;
+    frame.y = currentFrame * 14;
+    if (currentFrame == 8) {
+      currentFrame = 0;
+    }
+
+    frameTimer -= 0.1;
+  }
+}
+
+void Player::Render() {
+
+  Rectangle dest = {position.x, position.y, 12 * 4.0f, 14 * 4.0f};
+
+  DrawTexturePro(texture, frame, dest, {0, 0}, 0.0f, WHITE);
+}
 
 } // namespace entities

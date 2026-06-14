@@ -16,7 +16,14 @@ private:
   float speed;
   Vector2 position;
   Vector2 direction;
+
   Texture2D texture;
+
+  Rectangle frame;
+  int currentFrame;
+  float frameTimer;
+
+  void Animation(float dt);
 };
 
 } // namespace entities

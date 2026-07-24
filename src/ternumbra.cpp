@@ -17,8 +17,6 @@ int main() {
   camera.zoom = 1;
   camera.rotation = 0;
 
-  SetTargetFPS(60);
-
   // Game loop
   while (!WindowShouldClose()) {
     // Update

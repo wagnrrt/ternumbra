@@ -11,11 +11,15 @@ public:
   ~Player();
   void Update(float dt);
   void Render();
+  Vector2 pos;
+
+  static constexpr float WIDTH = 12.0f;
+  static constexpr float HEIGHT = 14.0f;
+  static constexpr float SCALE = 4.0f;
 
 private:
   float speed;
-  Vector2 position;
-  Vector2 direction;
+  Vector2 direction = {0, 0};
 
   Texture2D texture;
 

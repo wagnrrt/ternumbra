@@ -5,14 +5,14 @@
 
 namespace entities {
 Player::Player() {
-  position = {100, 100};
+  pos = {100, 100};
   speed = 300;
 
   texture = LoadTexture(ASSETS "player.png");
 
   currentFrame = 0;
   frameTimer = 0.0f;
-  frame = {0, 0, 12, 14};
+  frame = {0, 0, WIDTH, HEIGHT};
 }
 
 Player::~Player() { UnloadTexture(texture); }
@@ -33,14 +33,14 @@ void Player::Update(float dt) {
     input = Vector2Normalize(input);
 
   direction = Vector2Lerp(direction, input, 10 * dt);
-  position += direction * speed * dt;
+  pos += direction * speed * dt;
 
   if (input.x != 0 || input.y != 0) {
-    frame.x = 12;
+    frame.x = WIDTH;
     if (input.x < 0) {
-      frame.width = -12;
+      frame.width = -WIDTH;
     } else if (input.x > 0) {
-      frame.width = 12;
+      frame.width = WIDTH;
     }
   } else {
     frame.x = 0;
@@ -53,7 +53,7 @@ void Player::Animation(float dt) {
   frameTimer += dt;
   if (frameTimer >= 0.1) {
     currentFrame++;
-    frame.y = currentFrame * 14;
+    frame.y = currentFrame * HEIGHT;
     if (currentFrame == 8) {
       currentFrame = 0;
     }
@@ -64,7 +64,7 @@ void Player::Animation(float dt) {
 
 void Player::Render() {
 
-  Rectangle dest = {position.x, position.y, 12 * 4.0f, 14 * 4.0f};
+  Rectangle dest = {pos.x, pos.y, WIDTH * SCALE, HEIGHT * SCALE};
 
   DrawTexturePro(texture, frame, dest, {0, 0}, 0.0f, WHITE);
 }

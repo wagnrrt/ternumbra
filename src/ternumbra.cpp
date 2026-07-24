@@ -1,12 +1,14 @@
 #include "../include/entities/Player.hpp"
+#include "../include/world/Tilemap.hpp"
 #include <raylib.h>
 
 int main() {
   // Janela
-  InitWindow(800, 600, "Ternumbra");
+  InitWindow(1280, 720, "Ternumbra");
   SetTargetFPS(60);
 
   entities::Player player;
+  world::Tilemap tilemap;
 
   // Game loop
   while (!WindowShouldClose()) {
@@ -18,6 +20,7 @@ int main() {
     BeginDrawing();
     ClearBackground(BLACK);
 
+    tilemap.Render();
     player.Render();
     EndDrawing();
   }

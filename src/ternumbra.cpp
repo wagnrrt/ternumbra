@@ -1,5 +1,5 @@
-#include "../include/entities/Player.hpp"
-#include "../include/world/Tilemap.hpp"
+#include "entities/Player.hpp"
+#include "world/Tilemap.hpp"
 #include <raylib.h>
 
 int main() {

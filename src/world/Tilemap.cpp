@@ -1,9 +1,9 @@
-#include "../../include/world/Tilemap.hpp"
+#include "world/Tilemap.hpp"
 #include "raylib.h"
-#define ASSETS "resources/"
+#include "utils/AssetPath.hpp"
 
 namespace world {
-Tilemap::Tilemap() { tileset = LoadTexture(ASSETS "tileset.png"); }
+Tilemap::Tilemap() { tileset = LoadTexture(Assets::GetPath("tileset.png")); }
 
 Tilemap::~Tilemap() { UnloadTexture(tileset); }
 

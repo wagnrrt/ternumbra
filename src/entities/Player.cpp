@@ -1,14 +1,14 @@
-#include "../../include/entities/Player.hpp"
+#include "entities/Player.hpp"
 #include "raylib.h"
 #include "raymath.h"
-#define ASSETS "resources/"
+#include "utils/AssetPath.hpp"
 
 namespace entities {
 Player::Player() {
   pos = {100, 100};
   speed = 300;
 
-  texture = LoadTexture(ASSETS "player.png");
+  texture = LoadTexture(Assets::GetPath("player.png"));
 
   currentFrame = 0;
   frameTimer = 0.0f;
